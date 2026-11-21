@@ -42,6 +42,15 @@
     background:var(--paper);
     border-bottom:1px solid var(--line);
   }
+  .backbar{padding:12px 0 0}
+  .back{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:12px;font-weight:600;letter-spacing:.3px;
+    color:var(--accent);padding:5px 9px;border-radius:6px;
+    transition:background .16s;
+  }
+  .back:hover{background:var(--accent-soft)}
+  .back svg{width:12px;height:12px;stroke:var(--accent);stroke-width:2.4;fill:none}
   .head-inner{display:flex;align-items:center;gap:18px;padding-top:16px;padding-bottom:14px}
   .brand{display:flex;align-items:center;gap:13px;min-width:0;flex:1 1 auto}
   .seal{
@@ -277,6 +286,15 @@
 </style>
 </head>
 <body>
+
+<!-- ===== 退出键：返回小y后花园 ===== -->
+<div class="wrap">
+  <div class="backbar">
+    <a class="back" href="../" aria-label="返回小y后花园">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>返回小y后花园
+    </a>
+  </div>
+</div>
 
 <!-- ===== 顶部导航（含搜索 + 三横线） ===== -->
 <header class="site-head">
