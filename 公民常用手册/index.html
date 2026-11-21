@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公民常用手册</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f5c52'/%3E%3Cpath d='M9 8h14M9 14h14M9 20h9' stroke='%23f6f4ee' stroke-width='2.4'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#f6f4ee;
+    --paper-2:#efece4;
+    --card:#fffdf8;
+    --ink:#1c2024;
+    --ink-2:#4b545e;
+    --ink-3:#7b858f;
+    --line:#dcd7cc;
+    --line-2:#e8e3d8;
+    --accent:#1f5c52;
+    --accent-soft:#e8f0ee;
+    --accent-2:#8a4b2f;
+    --mark:#fff0c2;
+    --shadow:0 2px 10px rgba(28,32,36,.05);
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 8% -10%, #efeadf 0%, rgba(239,234,223,0) 60%),
+      linear-gradient(var(--paper), var(--paper));
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+    font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* ============ 顶部 ============ */
+  .site-head{
+    position:sticky;top:0;z-index:40;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .head-inner{display:flex;align-items:center;gap:18px;padding-top:16px;padding-bottom:14px}
+  .brand{display:flex;align-items:center;gap:13px;min-width:0;flex:1 1 auto}
+  .seal{
+    width:46px;height:46px;flex:0 0 46px;border-radius:10px;
+    background:var(--accent);display:flex;align-items:center;justify-content:center;
+  }
+  .seal svg{width:25px;height:25px;stroke:#f6f4ee;stroke-width:2;fill:none}
+  h1{font-family:"Songti SC","Source Han Serif SC","SimSun",serif;font-size:26px;letter-spacing:2px;font-weight:700;line-height:1.15}
+  .sub{font-size:12.5px;color:var(--ink-3);margin-top:5px;letter-spacing:.4px}
+  .head-tools{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+  .searchbox{
+    display:flex;align-items:center;gap:8px;
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:0 10px;height:42px;width:250px;
+    transition:border-color .16s, box-shadow .16s;
+  }
+  .searchbox:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,92,82,.1)}
+  .searchbox svg{width:16px;height:16px;flex:0 0 16px;stroke:var(--ink-3);stroke-width:2;fill:none}
+  #q{flex:1 1 auto;min-width:0;border:0;outline:none;background:transparent;font-size:16px;font-family:inherit;color:var(--ink)}
+  #q::placeholder{color:#9aa1aa;font-size:14px}
+  .menu-btn{
+    width:44px;height:44px;flex:0 0 44px;border-radius:8px;
+    border:1px solid var(--line);background:#fff;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .16s, background .16s;
+  }
+  .menu-btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .menu-btn svg{width:20px;height:20px;stroke:var(--ink);stroke-width:2.2;fill:none;transition:stroke .16s}
+  .menu-btn:hover svg{stroke:var(--accent)}
+
+  /* ============ 首页 ============ */
+  .lead{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    padding:30px 0 18px;
+  }
+  .lead-left h2{font-family:"Songti SC","SimSun",serif;font-size:20px;letter-spacing:1px}
+  .lead-left p{font-size:13px;color:var(--ink-2);margin-top:6px;max-width:640px}
+  .lead-right{display:flex;gap:22px}
+  .stat{text-align:right}
+  .stat b{font-family:"Songti SC",serif;font-size:23px;color:var(--accent);display:block;line-height:1.2}
+  .stat span{font-size:11.5px;color:var(--ink-3);letter-spacing:.5px}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:14px;padding-bottom:10px}
+  .card{
+    display:block;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:18px 18px 16px;
+    transition:border-color .16s, transform .16s, box-shadow .16s;
+    position:relative;
+  }
+  .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .card-top{display:flex;align-items:baseline;gap:10px}
+  .card-no{font-family:inherit;font-weight:600;font-size:11.5px;color:var(--accent);letter-spacing:1px;flex:0 0 auto}
+  .card-title{font-size:16.5px;font-weight:700;letter-spacing:.3px;line-height:1.4}
+  .card-sum{font-size:13px;color:var(--ink-2);margin-top:9px;line-height:1.7;min-height:44px}
+  .card-foot{display:flex;align-items:center;gap:12px;margin-top:13px;padding-top:11px;border-top:1px dashed var(--line-2);font-size:11.5px;color:var(--ink-3)}
+  .card-foot .go{margin-left:auto;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:4px}
+  .card-foot .go svg{width:12px;height:12px;stroke:var(--accent);stroke-width:2.4;fill:none}
+
+  /* ============ 首页电话条 ============ */
+  .quick{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 20px;margin-bottom:2px}
+  .quick .qt{font-size:12px;color:var(--ink-3);letter-spacing:.4px;margin-right:2px}
+  .quick .tel{font-size:12px}
+  .quick .more{margin-left:auto;font-size:12px;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:4px;padding:4px 2px}
+  .quick .more svg{width:12px;height:12px;stroke:var(--accent);stroke-width:2.2;fill:none}
+
+  /* ============ 分类页 ============ */
+  .crumb{display:flex;align-items:center;gap:8px;padding:22px 0 0;font-size:12.5px;color:var(--ink-3)}
+  .crumb a{display:inline-flex;align-items:center;gap:5px;color:var(--accent);font-weight:600;padding:6px 0}
+  .crumb svg{width:13px;height:13px;stroke:var(--accent);stroke-width:2.4;fill:none}
+  .sec-head{padding:14px 0 20px;border-bottom:2px solid var(--ink);margin-bottom:22px}
+  .sec-head .no{font-family:inherit;font-weight:600;font-size:11.5px;letter-spacing:1px;color:var(--accent)}
+  .sec-head h2{font-family:"Songti SC","Source Han Serif SC",serif;font-size:27px;letter-spacing:2px;margin-top:6px;line-height:1.3}
+  .sec-head p{font-size:13.5px;color:var(--ink-2);margin-top:9px;max-width:760px}
+
+  .item{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;margin-bottom:14px;
+  }
+  .item-t{display:flex;align-items:baseline;gap:9px;font-size:16px;font-weight:700;letter-spacing:.2px;line-height:1.5}
+  .item-t .n{font-family:inherit;font-weight:600;font-size:11.5px;color:var(--ink-3);flex:0 0 auto}
+  .rows{margin-top:12px;display:grid;grid-template-columns:1fr;gap:0}
+  .row{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--line-2)}
+  .row:first-child{border-top:0}
+  .lab{font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.5px;line-height:1.9}
+  .lab.g2{color:var(--accent-2)}
+  .row p{font-size:14px;color:var(--ink-2);line-height:1.8}
+  .row p strong{color:var(--ink);font-weight:600}
+
+  .tel-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+  .tel{
+    display:inline-flex;align-items:center;gap:5px;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
+    padding:3px 9px;border:1px solid #bcd4cf;border-radius:999px;
+    background:#eef5f3;color:var(--accent);cursor:pointer;position:relative;
+  }
+  .tel:hover{background:#e0eeeb;border-color:var(--accent)}
+  .tel svg{width:11px;height:11px;stroke:var(--accent);stroke-width:2;fill:none}
+  .tel[data-tip]:hover::after{
+    content:attr(data-tip);position:absolute;left:0;bottom:calc(100% + 7px);
+    background:#1c2024;color:#fff;font-family:inherit;font-size:11.5px;
+    padding:5px 9px;border-radius:6px;white-space:nowrap;z-index:20;letter-spacing:.2px;
+  }
+  .laws{margin-top:9px;display:flex;flex-direction:column;gap:5px}
+  .law{font-size:12.5px;color:var(--ink-2);line-height:1.7;padding-left:10px;border-left:2px solid #d8cbb8}
+  .more-law{
+    margin-top:10px;background:none;border:0;padding:0;cursor:pointer;
+    font-size:12px;color:var(--accent);font-family:inherit;display:inline-flex;align-items:center;gap:4px;
+  }
+  .more-law svg{width:12px;height:12px;stroke:var(--accent);stroke-width:2;fill:none}
+
+  /* ============ 搜索页 ============ */
+  .sr-head{padding:24px 0 6px}
+  .sr-head h2{font-family:"Songti SC",serif;font-size:21px;letter-spacing:1px}
+  .sr-head p{font-size:13px;color:var(--ink-3);margin-top:6px}
+  .sr-group{margin-top:22px}
+  .sr-group .g-t{font-size:12.5px;color:var(--accent);font-weight:700;letter-spacing:1px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .sr-item{padding:14px 0;border-bottom:1px solid var(--line-2);cursor:pointer}
+  .sr-item:hover{background:#fbf9f3}
+  .sr-item h4{font-size:15px;font-weight:700;letter-spacing:.2px}
+  .sr-item p{font-size:13px;color:var(--ink-2);margin-top:5px}
+  mark{background:var(--mark);color:inherit;padding:0 2px;border-radius:2px}
+  .empty-sr{padding:60px 0;text-align:center;color:var(--ink-3);font-size:14px}
+
+  /* ============ 抽屉（侧边悬浮） ============ */
+  .scrim{
+    position:fixed;inset:0;background:rgba(22,26,30,.38);
+    opacity:0;pointer-events:none;transition:opacity .22s;z-index:60;
+  }
+  .scrim.on{opacity:1;pointer-events:auto}
+  .drawer{
+    position:fixed;top:0;right:0;height:100%;width:min(350px,88vw);
+    background:var(--card);border-left:1px solid var(--line);
+    transform:translateX(101%);transition:transform .26s cubic-bezier(.4,.0,.2,1);
+    z-index:70;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(28,32,36,.1);
+  }
+  .drawer.on{transform:translateX(0)}
+  .d-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .d-head h3{font-family:"Songti SC",serif;font-size:16px;letter-spacing:1.5px}
+  .x-btn{width:36px;height:36px;border:1px solid var(--line);background:#fff;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .x-btn svg{width:14px;height:14px;stroke:var(--ink-2);stroke-width:2.2;fill:none}
+  .d-list{overflow-y:auto;flex:1 1 auto;padding:8px 0 20px}
+  .d-item{display:flex;align-items:baseline;gap:10px;padding:11px 18px;font-size:13.5px;transition:background .14s}
+  .d-item:hover{background:var(--accent-soft)}
+  .d-item .n{font-family:inherit;font-weight:600;font-size:11px;color:var(--accent);flex:0 0 20px}
+  .d-item span.t{color:var(--ink);line-height:1.5}
+  .d-foot{padding:12px 18px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-3);line-height:1.7}
+
+  /* ============ 悬浮按钮组 ============ */
+  .fab{position:fixed;right:16px;bottom:18px;z-index:45;display:flex;flex-direction:column;gap:8px}
+  .fab button{
+    width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+    background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 10px rgba(28,32,36,.09);position:relative;
+    transition:border-color .16s, transform .16s;
+  }
+  .fab button:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .fab button svg{width:18px;height:18px;stroke:var(--ink-2);stroke-width:2;fill:none}
+  .fab button[data-tip]:hover::after{
+    content:attr(data-tip);position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);
+    background:#1c2024;color:#fff;font-size:11.5px;padding:5px 9px;border-radius:6px;white-space:nowrap;
+  }
+
+  /* ============ 悬浮速查卡（可拖动） ============ */
+  .mini{
+    position:fixed;left:16px;bottom:18px;width:238px;z-index:44;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    box-shadow:0 6px 22px rgba(28,32,36,.13);
+    display:none;
+  }
+  .mini.on{display:block}
+  .mini-h{display:flex;align-items:center;gap:6px;padding:9px 10px;border-bottom:1px solid var(--line-2);cursor:move;user-select:none}
+  .mini-h .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:0 0 6px}
+  .mini-h b{font-size:12px;letter-spacing:.5px;flex:1 1 auto}
+  .mini-h button{width:22px;height:22px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .mini-h button svg{width:11px;height:11px;stroke:var(--ink-3);stroke-width:2.2;fill:none}
+  .mini-b{padding:6px 8px 8px;display:grid;grid-template-columns:1fr;gap:2px;max-height:300px;overflow:auto}
+  .mini-b a{font-size:11.5px;padding:5px 6px;border-radius:5px;color:var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .mini-b a:hover{background:var(--accent-soft)}
+  .mini-b a span{color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mini-b a i{font-style:normal;color:var(--accent);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;flex:0 0 auto}
+
+  /* ============ 弹窗（dialog） ============ */
+  dialog{
+    margin:auto;
+    border:0;padding:0;border-radius:12px;max-width:600px;width:calc(100% - 32px);
+    box-shadow:0 18px 50px rgba(20,24,28,.25);background:var(--card);
+  }
+  dialog::backdrop{background:rgba(22,26,30,.45)}
+  .dlg-in{padding:20px 20px 18px}
+  .dlg-top{display:flex;align-items:flex-start;gap:12px}
+  .dlg-top h3{font-size:16.5px;font-weight:700;line-height:1.45;flex:1 1 auto;letter-spacing:.2px}
+  .dlg-close{width:32px;height:32px;flex:0 0 32px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer}
+  .dlg-close svg{width:13px;height:13px;stroke:var(--ink-2);stroke-width:2.2;fill:none}
+  .dlg-body{margin-top:14px;font-size:13.5px;color:var(--ink-2);line-height:1.85;max-height:52vh;overflow:auto}
+  .dlg-body h4{font-size:12.5px;color:var(--accent);letter-spacing:.6px;margin:12px 0 5px}
+  .dlg-body li{margin-left:16px;margin-top:4px}
+  .dlg-note{margin-top:14px;padding-top:11px;border-top:1px dashed var(--line-2);font-size:11.5px;color:var(--ink-3);line-height:1.7}
+
+  /* ============ Toast ============ */
+  .toast{
+    position:fixed;left:50%;bottom:78px;transform:translate(-50%,14px);
+    background:#1c2024;color:#fff;font-size:13px;padding:9px 16px;border-radius:999px;
+    opacity:0;pointer-events:none;transition:opacity .18s, transform .18s;z-index:90;
+  }
+  .toast.on{opacity:1;transform:translate(-50%,0)}
+
+  /* ============ 页脚 ============ */
+  .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-3);line-height:1.9}
+  .foot b{color:var(--ink-2)}
+
+  /* ============ 响应式 ============ */
+  @media (max-width:760px){
+    .head-inner{flex-wrap:wrap;gap:12px;padding-top:13px}
+    .brand{flex:1 1 100%}
+    .head-tools{width:100%;order:3}
+    .searchbox{flex:1 1 auto;width:auto}
+    h1{font-size:22px}
+    .lead{padding:20px 0 14px}
+    .lead-right{gap:18px}
+    .sec-head h2{font-size:23px}
+    .row{grid-template-columns:1fr;gap:2px}
+    .lab{line-height:1.7}
+    .mini{display:none !important}
+  }
+  @media (min-width:760px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .rows{grid-template-columns:1fr}
+  }
+  @media (min-width:1000px){
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .row{grid-template-columns:88px 1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部导航（含搜索 + 三横线） ===== -->
+<header class="site-head">
+  <div class="wrap head-inner">
+    <div class="brand">
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h9"/></svg>
+      </div>
+      <div>
+        <h1><a href="#/home">公民常用手册</a></h1>
+        <p class="sub">生活场景 · 防坑要点 · 投诉电话 · 法律依据</p>
+      </div>
+    </div>
+    <div class="head-tools">
+      <div class="searchbox">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></svg>
+        <input id="q" type="search" placeholder="搜索骗局、工资、工伤、辱骂…" autocomplete="off" aria-label="搜索手册内容">
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="打开分类目录" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="wrap"></main>
+
+<div class="wrap"><footer class="foot">
+  <b>使用说明：</b>本手册为通用科普整理，条文序号以现行有效文本为准；个案可能因证据、地区细则不同而有差异，涉及具体纠纷建议咨询执业律师或拨打 12348 公共法律服务热线。<br>
+  <b>免责声明：</b>本站不构成法律意见，也不代替官方渠道处理；请勿将内容用于虚假投诉、恶意索赔。
+</footer></div>
+
+<!-- ===== 悬浮层：遮罩 + 侧边抽屉 ===== -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="分类目录" aria-hidden="true">
+  <div class="d-head">
+    <h3>全部分类</h3>
+    <button class="x-btn" id="drawerClose" aria-label="关闭目录">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="d-list" id="drawerList"></nav>
+  <div class="d-foot">共 14 类场景。点击分类查看防坑、维权步骤与法律依据。</div>
+</aside>
+
+<!-- ===== 悬浮按钮组 ===== -->
+<div class="fab">
+  <button id="fabMenu" data-tip="分类目录" aria-label="打开分类目录">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <button id="fabMini" data-tip="电话速查浮窗" aria-label="打开速查浮窗">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
+  </button>
+  <button id="fabTop" data-tip="回到顶部" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6"/></svg>
+  </button>
+</div>
+
+<!-- ===== 悬浮速查卡（可拖动） ===== -->
+<div class="mini" id="mini">
+  <div class="mini-h" id="miniHead">
+    <span class="dot" aria-hidden="true"></span>
+    <b>投诉电话速查</b>
+    <button id="miniClose" aria-label="关闭速查窗">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="mini-b" id="miniBody"></div>
+</div>
+
+<!-- ===== 弹窗 ===== -->
+<dialog id="dlg">
+  <div class="dlg-in">
+    <div class="dlg-top">
+      <h3 id="dlgTitle">条文要点</h3>
+      <button class="dlg-close" id="dlgClose" aria-label="关闭">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="dlg-body" id="dlgBody"></div>
+    <div class="dlg-note">以上为条文要点摘录，具体适用请以现行有效法律文本及主管部门认定为准。</div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================= 数据 ================= */
+const HOTLINES = [
+  {n:"12345",u:"政务服务便民热线",d:"各类民生投诉、部门推诿、办事咨询"},
+  {n:"12315",u:"市场监管投诉举报",d:"消费纠纷、价格欺诈、假货、食品问题"},
+  {n:"12333",u:"人力资源社会保障",d:"欠薪、社保、劳动合同、工伤咨询"},
+  {n:"12328",u:"交通运输服务监督",d:"网约车、班线客运、驾培纠纷"},
+  {n:"12305",u:"邮政业申诉",d:"快递丢失、破损、延误理赔"},
+  {n:"12320",u:"卫生健康热线",d:"医疗服务、医美机构、公共卫生"},
+  {n:"12378",u:"银行保险投诉",d:"贷款、保险、理财纠纷"},
+  {n:"12377",u:"网信举报中心",d:"网络谣言、网暴、有害信息"},
+  {n:"12321",u:"网络不良信息举报",d:"骚扰电话、垃圾短信、信息泄露"},
+  {n:"12348",u:"公共法律服务",d:"免费法律咨询、法律援助申请"},
+  {n:"110",u:"公安报警",d:"人身安全、暴力、诈骗、霸王餐、家暴"},
+  {n:"122",u:"交通事故报警",d:"车辆事故、肇事逃逸、路损"}
+];
+
+const DATA = [
+{
+  no:"01", id:"market", title:"菜市场与生鲜采购",
+  sum:"鬼秤、注水肉、农残超标、虚假打折——菜市场里最常见也最容易被忍气吞声的几类坑。",
+  items:[
+    {
+      t:"鬼秤、缺斤少两",
+      s:"摊主用改装秤、去皮不净、连袋带水一起称，回家一复称少二三两；活鱼活虾称完再换死货。",
+      p:"认准市场公平秤复称；要求去袋去皮、看清单价与小计；活鲜当面装袋做记号；固定摊位留小票。",
+      w:"当场用公平秤复称并拍照录像→找市场管理办公室调秤→拒付差额并索要凭证→拨打 12315→市场监管所现场核查计量器具。",
+      h:"12315 / 12345",
+      l:["《消费者权益保护法》第55条：经营者有欺诈行为，按价款三倍赔偿，不足五百元按五百元计。",
+         "《计量法》及《计量违法行为处罚细则》：使用不合格计量器具或破坏准确度，责令赔偿并处罚款。"]
+    },
+    {
+      t:"注水肉、以次充好",
+      s:"肉色发白发亮、按压出水、切面渗水；用鸭肉冒充牛肉、冷冻肉冒充鲜肉、病死畜禽肉上市。",
+      p:"看检疫合格证明和胴体检疫印章；按压是否回弹、有无异常水分；价格明显低于市场价要警惕；不买无票据散装肉。",
+      w:"保留购买小票和肉品照片→要求出示检疫证明→拨打 12315 并向市场监管所举报→疑似病死畜禽同时报 110 或农业农村部门。",
+      h:"12315 / 110",
+      l:["《食品安全法》第148条：不符合食品安全标准的食品，可要求价款十倍或损失三倍赔偿，不足一千元按一千元计。",
+         "《食品安全法》第34条：禁止生产经营病死、毒死或死因不明的禽畜肉类及其制品。"]
+    },
+    {
+      t:"农药残留超标、变质食品",
+      s:"叶菜有异味、久放不腐、腌制品亚硝酸盐超标；熟食隔夜回锅再卖；散装干货硫磺熏蒸。",
+      p:"优先选有快检公示的摊位；叶菜多浸泡冲洗；熟食当天买当天吃；不买颜色异常鲜艳的干货。",
+      w:"留一份原样密封冷藏→就医并保留病历（如已食用）→向市场监管所申请快检→12315 投诉并索要受理编号。",
+      h:"12315 / 12345",
+      l:["《食品安全法》第148条：首负责任制，可向经营者或生产者要求赔偿，不得推诿。",
+         "《农产品质量安全法》：禁止销售农药残留等不符合质量安全标准的农产品。"]
+    },
+    {
+      t:"虚假打折、不明码标价",
+      s:"先涨价再打折、标价与结算价不一致、称重时偷偷改单价、“特价”不标限制条件。",
+      p:"看清标价签与电子秤单价是否一致；拍照留存价签；结账核对小票；拒绝“模糊报价”。",
+      w:"现场拍照固定价签与小票→要求按标价结算→12315 投诉价格欺诈→市场监管部门可责令退还并处罚。",
+      h:"12315",
+      l:["《价格法》第14条：禁止利用虚假或使人误解的价格手段诱骗交易。",
+         "《明码标价和禁止价格欺诈规定》：标价之外不得加价，促销须标明期限与条件。"]
+    }
+  ]
+},
+{
+  no:"02", id:"restaurant", title:"餐饮门店与客人纠纷",
+  sum:"跑单、吃坏肚子、恶意差评、顾客摔伤，以及被店里要求为跑单买单时怎么拒。",
+  items:[
+    {
+      t:"客人跑单、吃霸王餐",
+      s:"吃完趁忙溜走、扫码不付款、假装已付、多人轮流点单后集体离开。",
+      p:"先付后吃或扫码点单预付；包间收押金；高峰期专人盯台；监控覆盖出入口并保留 30 天以上。",
+      w:"立即调监控截取人脸与离店画面→保留点菜单、同桌人数、消费金额→拨打 110 报案（涉嫌诈骗/拒不支付）→金额较大可凭监控与证人起诉。",
+      h:"110",
+      l:["《民法典》第577条：不履行合同义务的，应承担继续履行、赔偿损失等违约责任。",
+         "《治安管理处罚法》关于诈骗、寻衅滋事的规定：可处拘留并罚款；金额较大涉嫌诈骗罪。"]
+    },
+    {
+      t:"客人跑单，服务员该不该赔？",
+      s:"客人没付钱就走，店长要求当班服务员与店里“一人承担一半”，直接从当月工资里扣；不签就扣全月工资或让人走。",
+      p:"先弄清三点：岗位是否负责收款、店里的赔偿制度是否经民主程序并书面告知本人、自己有无故意或重大过失。日常按流程点单、扫码收款、交接班对账，发现异常立即报领班并留下记录。",
+      w:"①书面拒绝分摊，要求店里出具制度文本、扣款依据与明细；②保存排班表、点菜单、监控、工资条、扣款通知、工作群记录；③向劳动保障监察投诉（12333）要求限期补发；④申请劳动仲裁主张返还被克扣工资（在职期间追讨劳动报酬不受一年仲裁时效限制）；⑤因拒赔被辞退的，可一并主张违法解除赔偿金。",
+      h:"12333 / 12345 / 12348",
+      l:["结论：不需要赔。顾客逃单属于经营者应承担的经营风险，不是“劳动者本人原因”造成的损失；服务员正常履职、无故意或重大过失的，店方无权要求其买单，更不能直接从工资里扣。",
+         "《民法典》第577条：顾客点单后不付款，是顾客与餐厅之间的合同违约，应由经营者向顾客追偿，不能转嫁给员工。",
+         "《工资支付暂行规定》第15条：用人单位不得克扣工资，仅可代扣个税、社保费、法院判决裁定中的抚养费赡养费及法律法规规定的其他费用；顾客逃单损失不在其列。",
+         "《工资支付暂行规定》第16条：只有因劳动者本人原因造成经济损失，才可按劳动合同约定赔偿；每月扣除不得超过当月工资的20%，扣后不得低于当地最低工资标准。",
+         "《劳动合同法》第26条：用人单位免除自己的法定责任、排除劳动者权利的条款无效；未经公示告知的“跑单员工买单”制度对劳动者没有约束力。",
+         "《劳动法》第50条：工资应当按月足额支付，不得克扣或无故拖欠。",
+         "《劳动争议调解仲裁法》第27条：劳动关系存续期间因拖欠劳动报酬发生争议的，不受一年仲裁时效期间的限制。"]
+    },
+    {
+      t:"客人投诉吃坏肚子、食物中毒",
+      s:"隔夜菜回锅、生熟不分、冷链断链；多人同餐后集体腹泻；客人带媒体或拍视频索赔。",
+      p:"留样 48 小时（每样不少于 125g）；生熟分开、餐具消毒；采购索证索票；购买食品安全责任险。",
+      w:"封存同批食材与留样→协助就医并保留病历、检验报告→报市场监管所到场采样→12315 报备→配合调查，切忌私了删证据。",
+      h:"12315 / 12320",
+      l:["《食品安全法》第148条：消费者可要求十倍价款或三倍损失赔偿，不足一千按一千。",
+         "《食品安全法》第125条：经营腐败变质、感官性状异常食品，可处五万元以上罚款。"]
+    },
+    {
+      t:"外卖差评、恶意索赔",
+      s:"以差评要挟免单、职业索赔人批量下单后投诉、同行恶意刷差评。",
+      p:"全程留痕：出餐照片、打包视频、骑手取餐记录；差评回复只讲事实不互骂；对敲诈保留聊天记录。",
+      w:"平台申诉并提交出餐证据→要求平台核查订单真实性→遇威胁索财保留证据报 110→不私下转账删评。",
+      h:"110 / 平台客服",
+      l:["《民法典》第1024条：民事主体享有名誉权，禁止以侮辱、诽谤等方式侵害。",
+         "《治安管理处罚法》关于敲诈勒索的规定；情节严重涉嫌敲诈勒索罪。"]
+    },
+    {
+      t:"顾客在店内摔伤、烫伤",
+      s:"地面湿滑无警示、台阶无护栏、热汤泼洒、椅子断裂；顾客酒后自行摔倒。",
+      p:"湿滑区放置警示牌、及时拖干；通道无杂物；热食提醒；公共区域监控；投保场所责任险。",
+      w:"第一时间救治并留存现场照片、监控、目击者联系方式→报保险→协商或由顾客起诉；不要当场承诺全额赔偿。",
+      h:"保险公司 / 12348",
+      l:["《民法典》第1198条：经营场所未尽安全保障义务造成他人损害，应承担侵权责任。",
+         "《民法典》第1179条：人身损害赔偿包括医疗费、护理费、误工费、残疾赔偿金等。"]
+    }
+  ]
+},
+{
+  no:"03", id:"work", title:"打工上班：工资与合同",
+  sum:"欠薪、不签合同、加班费、试用期、离职扣钱——打工人最该先留好的四类证据。",
+  items:[
+    {
+      t:"拖欠、克扣工资",
+      s:"以“生意不好”拖延、押一个月工资、离职后不结清、用罚款名义乱扣、只发一部分。",
+      p:"保留考勤打卡、排班表、工资条、银行流水、工作群派活记录；入职确认工资构成与发放日；不接受口头承诺。",
+      w:"书面（微信/短信）催告并留痕→向劳动保障监察投诉（12333）→仍不给可申请劳动仲裁→仲裁不服可起诉；恶意欠薪可向公安报案。",
+      h:"12333 / 12345",
+      l:["《劳动法》第50条：工资应当按月足额支付，不得克扣或无故拖欠。",
+         "《劳动合同法》第85条：逾期不支付，劳动行政部门可责令加付赔偿金（应付金额50%以上100%以下）。"]
+    },
+    {
+      t:"不签劳动合同",
+      s:"只口头约定、让签空白合同、合同被公司全部收走、用“劳务协议”规避劳动关系。",
+      p:"入职一个月内要求签书面合同并自留一份；核对岗位、工资、工时、社保条款；拍照留存盖章页。",
+      w:"收集工牌、工装、打卡、工资转账、同事证言证明事实劳动关系→主张未签合同双倍工资→劳动仲裁（时效一年）。",
+      h:"12333",
+      l:["《劳动合同法》第10条：建立劳动关系应订立书面合同，已用工未同时订立的应在一个月内订立。",
+         "《劳动合同法》第82条：超过一个月不满一年未签书面合同，应每月支付二倍工资。"]
+    },
+    {
+      t:"加班费不给、强制加班",
+      s:"每天多干两三小时不算加班、月休四天、法定节假日照常上班只给红包、以“值班”名义规避。",
+      p:"记录每日上下班时间（打卡截图、排班表、交接班记录）；加班需有指令痕迹；保留节假日排班。",
+      w:"统计加班时长与应发金额→书面索要→劳动监察投诉→劳动仲裁主张加班费；注意保存两年内考勤。",
+      h:"12333",
+      l:["《劳动法》第44条：延时加班不低于150%，休息日加班不低于200%，法定节假日不低于300%。",
+         "《劳动合同法》第31条：用人单位不得强迫或变相强迫劳动者加班。"]
+    },
+    {
+      t:"试用期被随意辞退、乱定试用期",
+      s:"试用期长达半年、二次约定试用期、试用期不缴社保、临近转正随便找个理由辞退。",
+      p:"核对合同期限对应的试用期上限；要求书面录用条件；保留考核记录与工作成果。",
+      w:"要求出具书面解除理由→无法证明“不符合录用条件”的属违法解除→主张赔偿金（经济补偿的二倍）→劳动仲裁。",
+      h:"12333",
+      l:["《劳动合同法》第19条：试用期最长不得超过六个月，同一用人单位与同一劳动者只能约定一次试用期。",
+         "《劳动合同法》第21条：试用期内除法定情形外不得解除劳动合同，须说明理由。"]
+    },
+    {
+      t:"离职被扣工资、押证件、收押金",
+      s:"以“未满一年”扣培训费、押身份证、收服装押金、离职不批就不给最后一个月工资。",
+      p:"入职拒绝交押金与证件原件；保留押金条；离职提交书面通知并留送达证据。",
+      w:"书面提出离职并保留证据→要求结清工资与出具离职证明→劳动监察投诉→仲裁主张返还押金与克扣工资。",
+      h:"12333",
+      l:["《劳动合同法》第9条：不得扣押身份证等证件，不得要求提供担保或收取财物。",
+         "《劳动合同法》第37条：提前三十日书面通知可解除；试用期提前三日通知。"]
+    },
+    {
+      t:"不缴社保、少缴社保",
+      s:"说“自愿放弃社保”、按最低基数缴、只缴工伤不缴养老医疗、试用期不缴。",
+      p:"每月核对社保缴费记录（掌上 12333 / 当地人社 App）；不接受“放弃社保协议”。",
+      w:"向社保稽核或劳动监察投诉要求补缴→保留工资流水证明实际工资基数→必要时申请劳动仲裁确认劳动关系。",
+      h:"12333",
+      l:["《社会保险法》第58条：用人单位应自用工之日起三十日内为职工办理社保登记。",
+         "《社会保险法》第60条：应自行申报、按时足额缴纳，不得缓缴、减免。"]
+    },
+    {
+      t:"孕期产期被辞退、降薪",
+      s:"怀孕后被调岗降薪、以“不能胜任”辞退、产检请假扣工资、不给哺乳时间。",
+      p:"保留怀孕诊断与产检记录；书面申请产假与哺乳时间；不签“自愿离职”协议。",
+      w:"书面拒绝调岗降薪→劳动监察投诉（12333）→仲裁主张恢复岗位或赔偿；违法解除可要求赔偿金。",
+      h:"12333 / 12338",
+      l:["《劳动合同法》第42条：女职工在孕期、产期、哺乳期的，用人单位不得依照第40条、第41条解除劳动合同。",
+         "《女职工劳动保护特别规定》第5条：不得因怀孕、生育、哺乳降低工资、予以辞退或解除合同。",
+         "《女职工劳动保护特别规定》第7条：产假98天，难产增加15天，多胞胎每多一婴增加15天。"]
+    }
+  ]
+},
+{
+  no:"04", id:"injury", title:"工伤与职业病",
+  sum:"后厨烫伤、上下班车祸、长期油烟——哪些算工伤、多久内必须申请、能拿哪些钱。",
+  items:[
+    {
+      t:"店里上班受伤（烫伤、切伤、滑倒、砸伤）",
+      s:"后厨被热油烫伤、切菜伤手、拖地滑倒、搬货砸脚；老板说“不算工伤，自己不小心”。",
+      p:"第一时间就医并要求病历写明受伤时间地点原因；拍现场照片、留监控；找在场同事作证；保留排班与工牌。",
+      w:"要求单位 30 日内申请工伤认定→单位不报，本人或近亲属 1 年内直接向人社部门申请→认定后做劳动能力鉴定→按伤残等级享受待遇。",
+      h:"12333",
+      l:["《工伤保险条例》第14条第1项：工作时间、工作场所内因工作原因受到事故伤害，应认定为工伤。",
+         "《工伤保险条例》第17条：单位应自事故之日起30日内申请；单位未申请的，职工可在1年内直接申请。",
+         "《工伤保险条例》第33条：停工留薪期内原工资福利待遇不变，由单位按月支付。"]
+    },
+    {
+      t:"上下班路上出交通事故",
+      s:"骑车被撞、坐班车出事、走路被撞；自己负主要责任时却被要求按工伤赔。",
+      p:"报警并取得事故认定书；保留路线、打卡时间证明“合理时间合理路线”；就医记录写清外伤原因。",
+      w:"凭事故认定书（本人非主要责任）申请工伤认定→同时向肇事方及保险公司索赔→工伤与第三方赔偿可分别主张。",
+      h:"122 / 12333",
+      l:["《工伤保险条例》第14条第6项：上下班途中受到非本人主要责任的交通事故或城市轨道交通、客运轮渡、火车事故伤害，应认定为工伤。",
+         "《道路交通安全法》第76条：先由交强险赔付，不足部分按责任分担。"]
+    },
+    {
+      t:"单位没缴工伤保险",
+      s:"小餐馆不缴社保，出事后老板只愿出几千块私了，让签“自愿放弃赔偿”。",
+      p:"入职就查社保缴纳记录；发生工伤后不要签任何放弃权利的协议；所有沟通留文字记录。",
+      w:"仍按工伤程序申请认定→由单位按条例标准全额支付待遇→单位拒付可申请劳动仲裁、起诉；同时向劳动监察举报未参保。",
+      h:"12333",
+      l:["《工伤保险条例》第62条：应参加而未参加工伤保险的用人单位职工发生工伤，由该单位按条例规定的项目和标准支付费用。",
+         "《社会保险法》第41条：用人单位未依法缴纳工伤保险费，发生工伤事故的由用人单位支付待遇。"]
+    },
+    {
+      t:"职业病（油烟、粉尘、噪音、化学剂）",
+      s:"长期后厨油烟咳嗽、装修粉尘、长期噪音听力下降、接触清洁剂皮肤溃烂。",
+      p:"定期职业健康检查并保留报告；要求单位提供防护用品；记录岗位与接触年限。",
+      w:"到有资质的职业病诊断机构诊断→取得职业病诊断证明书→申请工伤认定（1年内）→按伤残等级享受待遇。",
+      h:"12320 / 12333",
+      l:["《工伤保险条例》第14条第4项：患职业病的，应认定为工伤。",
+         "《职业病防治法》第35条：用人单位应组织上岗前、在岗期间和离岗时的职业健康检查。"]
+    },
+    {
+      t:"上班时突发疾病、猝死",
+      s:"加班中突然倒地、班中脑出血、送医后一两天内死亡；单位称“自己身体原因不算工伤”。",
+      p:"立即拨打 120 并保留出车与抢救记录；通知家属与同事；保存当天排班、打卡与监控。",
+      w:"要求单位 30 日内申请工伤认定→单位不报，家属 1 年内直接申请→以“工作时间工作岗位突发疾病死亡或48小时内抢救无效死亡”主张视同工伤。",
+      h:"120 / 12333",
+      l:["《工伤保险条例》第15条第1项：在工作时间和工作岗位，突发疾病死亡或者在48小时之内经抢救无效死亡的，视同工伤。",
+         "《工伤保险条例》第17条：单位未按规定提出申请的，工伤职工或其近亲属可在1年内直接申请。"]
+    }
+  ]
+},
+{
+  no:"05", id:"rent", title:"租房与房东纠纷",
+  sum:"押金不退、二房东、黑中介、合同期内涨租、水电乱收费。",
+  items:[
+    {
+      t:"退租押金不退、乱扣押金",
+      s:"以“墙脏了”“有划痕”“水电未结”为由全扣；退租后联系不上房东。",
+      p:"入住当天拍全屋视频与照片、核对水电表底数；交接清单双方签字；合同写明押金退还时限与扣减条件。",
+      w:"书面要求限期退还并附证据→向街道/住建部门投诉→12345 反映→凭合同与转账记录起诉（可走小额诉讼）。",
+      h:"12345 / 12348",
+      l:["《民法典》第733条：租赁期限届满，承租人应返还租赁物，出租人应返还押金等费用。",
+         "《民法典》第577条：不履行合同义务或履行不符合约定，应承担违约责任。"]
+    },
+    {
+      t:"二房东转租、一房多租",
+      s:"二房东高价转租、收完钱跑路、一套房同时租给多人、原房东上门赶人。",
+      p:"要求出示房产证与房东身份证；核实转租是否经房东书面同意；租金尽量转账并备注用途。",
+      w:"发现无转租权立即书面解除并索退款→报 110（涉嫌诈骗）→向住建部门举报→凭合同起诉二房东。",
+      h:"110 / 12345",
+      l:["《民法典》第716条：承租人经出租人同意可以转租；未经同意转租，出租人可解除合同。",
+         "《民法典》第718条：出租人知道转租六个月内未提出异议的，视为同意。"]
+    },
+    {
+      t:"黑中介、虚假房源",
+      s:"网上挂低价好房，到店说“刚租掉”再推高价房；收中介费后不办事；虚假照片。",
+      p:"先查中介营业执照与备案；要求看房后再付费；所有承诺写进合同；保留聊天记录与收款凭证。",
+      w:"向住建部门/市场监管投诉→12345→12315（收费与虚假宣传）→金额较大可报警或起诉。",
+      h:"12345 / 12315",
+      l:["《民法典》第962条：中介人应如实报告有关订立合同的事项，故意隐瞒重要事实或提供虚假情况损害委托人利益的，不得请求支付报酬并应赔偿损失。",
+         "《房地产经纪管理办法》：禁止发布虚假房源、隐瞒真实情况。"]
+    },
+    {
+      t:"合同期内涨租、突然赶人",
+      s:"房东看生意好临时加租、卖房要求一个月内搬走、以“自住”为由违约。",
+      p:"合同写明租期、租金、涨幅与违约金；保存每期转账记录；不接受口头涨租。",
+      w:"书面拒绝单方涨租并援引合同条款→要求继续履行或赔偿→协商不成起诉；买卖不破租赁可对抗新业主。",
+      h:"12348",
+      l:["《民法典》第543条：变更合同需当事人协商一致。",
+         "《民法典》第725条：租赁物在租赁期间发生所有权变动的，不影响租赁合同效力。"]
+    }
+  ]
+},
+{
+  no:"06", id:"shop", title:"网购与快递",
+  sum:"七日无理由、假货三倍赔、快递丢了谁赔、定金能不能退。",
+  items:[
+    {
+      t:"七日无理由退货被拒",
+      s:"商家称“特价不退”“已拆封不退”“影响二次销售”；定制、生鲜、拆封音像制品确实例外。",
+      p:"下单前看清退换规则；收货拍开箱视频；保留吊牌、包装、赠品；七日内发起申请。",
+      w:"平台内申请退货并上传开箱证据→平台介入→12315 投诉→经营者仍拒可起诉；退货运费按规则承担。",
+      h:"12315 / 平台客服",
+      l:["《消费者权益保护法》第25条：网络等方式购物，七日内可无理由退货（定制、鲜活易腐、拆封音像制品、报纸期刊等除外）。",
+         "《消费者权益保护法》第24条：不符合质量要求的，可依约定退货或要求更换、修理。"]
+    },
+    {
+      t:"假货、货不对板、翻新机",
+      s:"宣传正品发高仿、参数缩水、二手翻新当新机、赠品不发货。",
+      p:"录开箱视频、拍序列号与包装防伪；保留商品页截图与客服承诺；优先平台官方店。",
+      w:"平台投诉并申请“假一赔三”→12315 举报→涉嫌欺诈主张三倍赔偿（不足五百按五百）→金额大可报警。",
+      h:"12315 / 110",
+      l:["《消费者权益保护法》第55条：欺诈行为按价款三倍赔偿，不足五百元按五百元计。",
+         "《电子商务法》第17条：不得以虚假宣传、虚构交易等方式误导消费者。"]
+    },
+    {
+      t:"快递丢失、破损、被冒领",
+      s:"快递显示签收但没收到、外包装破损内件缺失、驿站丢件、保价与否赔偿差很多。",
+      p:"贵重物品保价并当面验货；收货拍视频；保留运单号与聊天记录；要求放驿站需本人同意。",
+      w:"7 日内向快递公司书面索赔→不满可向邮政管理部门申诉（12305）→未保价按约定或法定限额赔，故意损毁可起诉。",
+      h:"12305",
+      l:["《快递暂行条例》第27条：快件延误、丢失、损毁、内件短少，应按约定赔偿；未约定的依民事法律规定。",
+         "《邮政法》第47条：未保价邮件按实际损失赔偿，但最高不超过收取资费的三倍（邮政企业）。"]
+    },
+    {
+      t:"定金不退、订金混淆",
+      s:"预付“定金”后反悔，商家全扣；合同写“订金”却按定金处理；定金超过总价 20%。",
+      p:"看清字是“定金”还是“订金”；定金比例不超过总价 20%；大额付款走平台留凭证。",
+      w:"超比例部分主张返还→商家违约可要求双倍返还定金→协商不成 12315 或起诉。",
+      h:"12315 / 12348",
+      l:["《民法典》第586条：定金数额不得超过主合同标的额的20%，超过部分不产生定金效力。",
+         "《民法典》第587条：给付定金方违约无权要求返还；收受方违约应双倍返还。"]
+    },
+    {
+      t:"直播带货假货、虚假宣传",
+      s:"直播间“全网最低价”实际先涨后降、宣称专柜正品发高仿、不支持七天无理由、主播承诺不兑现。",
+      p:"截屏保存直播画面与商品页、录屏主播承诺；走平台下单不私下转账；核对店铺资质与销量评价。",
+      w:"平台投诉并要求退一赔三→12315 举报虚假宣传→平台明知仍不处理可要求平台承担连带责任→金额较大报警。",
+      h:"12315 / 平台客服",
+      l:["《电子商务法》第38条：平台知道或应当知道平台内经营者侵害消费者合法权益未采取必要措施的，依法与该经营者承担连带责任。",
+         "《广告法》第56条：虚假广告欺骗、误导消费者，造成损害的，广告主应承担民事责任。",
+         "《消费者权益保护法》第55条：欺诈行为按价款三倍赔偿，不足五百按五百计。"]
+    }
+  ]
+},
+{
+  no:"07", id:"prepaid", title:"预付卡、美容健身与培训",
+  sum:"充值跑路、年卡不退、医美贷、培训退费——预付费是纠纷最密集的领域。",
+  items:[
+    {
+      t:"充值后商家跑路",
+      s:"理发店、洗车店、水果店办卡后关门；换老板不认旧卡；余额只能换商品不能退。",
+      p:"不大额充值、不跨年充值；查营业执照与经营年限；每次消费要小票并记录余额；拒绝“最终解释权”条款。",
+      w:"联合其他消费者取证→12315 投诉并查询企业登记信息→12345→余额较大可起诉或报警（涉嫌诈骗）。",
+      h:"12315 / 12345",
+      l:["《消费者权益保护法实施条例》（2024年7月1日施行）关于预付式消费：经营者停业、迁移应提前告知并退还预付款余额。",
+         "《消费者权益保护法》第26条：格式条款排除消费者权利、减轻经营者责任的无效。"]
+    },
+    {
+      t:"美容院强制消费、诱导医美贷",
+      s:"免费体验进店后强行推销、办“分期”实际是网贷、不签字不让走、项目加价。",
+      p:"不签字、不刷脸、不提供身份证；拒绝“先做后付”；核对机构是否有医疗资质。",
+      w:"明确拒绝并录音→要求离店，受阻报 110→12315 投诉强制交易→涉及贷款向 12378 投诉并保留合同。",
+      h:"110 / 12315 / 12378",
+      l:["《消费者权益保护法》第9条：消费者享有自主选择商品或服务的权利。",
+         "《消费者权益保护法》第16条：不得设定不公平、不合理交易条件，不得强制交易。"]
+    },
+    {
+      t:"健身年卡、私教课不退",
+      s:"“一经售出不退不换”、搬家/受伤不能继续、私教离职课程作废。",
+      p:"合同写明转让、暂停、退款规则；不一次性买多年；保留付款凭证与课时记录。",
+      w:"书面申请退款并说明原因→12315→市场监管调解→起诉主张退还未消费部分。",
+      h:"12315",
+      l:["《消费者权益保护法》第26条：不得以格式条款作出对消费者不公平的规定。",
+         "《民法典》第497条：不合理免除或减轻己方责任、加重对方责任的格式条款无效。"]
+    },
+    {
+      t:"教育培训退费难",
+      s:"承诺包过、随时退，实际扣高额“违约金”；机构关停；课程缩水。",
+      p:"查办学许可与资金监管；不签“概不退费”；保留招生简章与聊天承诺。",
+      w:"书面申请退费→12315 / 12345 / 教育主管部门→按未上课时比例主张退款→起诉。",
+      h:"12315 / 12345",
+      l:["《消费者权益保护法》第55条：虚假宣传构成欺诈可主张三倍赔偿。",
+         "《民法典》第509条：当事人应按约定全面履行义务。"]
+    }
+  ]
+},
+{
+  no:"08", id:"lending", title:"借钱、担保与催收",
+  sum:"借条怎么写才有效、多高的利息不受保护、被暴力催收怎么办。",
+  items:[
+    {
+      t:"借条与转账凭证",
+      s:"只写“今借到现金若干”、金额只有小写、没有身份证号、现金交付无凭证、借条被撕毁或篡改。",
+      p:"写清借款人与出借人姓名、身份证号、金额大小写、用途、期限、利率、还款方式；签字并按手印；优先银行转账并备注“借款”。",
+      w:"证据链＝借条＋转账记录＋催款聊天记录；对方不还先书面催告→三年诉讼时效内起诉→可申请支付令。",
+      h:"12348",
+      l:["《民法典》第667条：借款合同是借款人向贷款人借款，到期返还借款并支付利息的合同。",
+         "《民法典》第188条：向人民法院请求保护民事权利的诉讼时效期间为三年。"]
+    },
+    {
+      t:"高利贷、砍头息、套路贷",
+      s:"借一万先扣两千“手续费”、利息按日滚、逾期费翻倍、让签空白合同或房屋抵押委托书。",
+      p:"不碰无资质放贷平台；核对实际到账金额与合同金额是否一致；拒绝空白合同与“委托卖房”公证。",
+      w:"保存合同、转账与催收记录→超出司法保护上限的利息可拒付→涉嫌套路贷、诈骗报 110→已签不公平合同可起诉撤销。",
+      h:"110 / 12348",
+      l:["《民法典》第680条：禁止高利放贷，借款利率不得违反国家有关规定。",
+         "《最高人民法院关于审理民间借贷案件适用法律若干问题的规定》：利率超过合同成立时一年期 LPR 四倍的部分不予保护。"]
+    },
+    {
+      t:"暴力催收、爆通讯录",
+      s:"电话轰炸亲友、上门泼漆、P 图威胁、群发欠款信息、冒充公检法施压。",
+      p:"不授权通讯录；保留通话录音与短信截图；不私下转账给“催收员”个人账户。",
+      w:"录音取证→报 110（威胁人身安全、骚扰）→向平台与金融监管部门投诉（12378）→情节严重可追究催收非法债务罪。",
+      h:"110 / 12378",
+      l:["《刑法》第293条之一：催收非法债务，使用暴力、胁迫、限制人身自由、侵入住宅、恐吓跟踪、骚扰等手段，情节严重的构成犯罪。",
+         "《治安管理处罚法》关于威胁、骚扰、侵犯人身权利的规定。"]
+    },
+    {
+      t:"亲友借钱不还、担保被追债",
+      s:"口头借款无凭证、微信转账没备注、担保人稀里糊涂签“连带责任”、被要求替人还全款。",
+      p:"借款必留书面凭证与转账记录；担保前看清“一般保证”还是“连带责任保证”；不签空白担保书。",
+      w:"先书面催告并保留送达证据→协商分期→起诉并申请财产保全；担保人被追偿可向债务人追偿。",
+      h:"12348",
+      l:["《民法典》第681条：保证合同是为保障债权实现，保证人和债权人约定当债务人不履行到期债务时保证人承担保证责任的合同。",
+         "《民法典》第688条：连带责任保证的债务人不履行到期债务，债权人可请求债务人履行，也可请求保证人在保证范围内承担保证责任。"]
+    }
+  ]
+},
+{
+  no:"09", id:"transport", title:"交通与出行",
+  sum:"事故怎么定责、电动车被扣怎么取回、网约车绕路加价找谁。",
+  items:[
+    {
+      t:"交通事故处理与定责",
+      s:"对方逃逸、私了后被反悔、伤者不去医院、保险拒赔、责任认定书不服。",
+      p:"立即停车、开双闪、摆放警示牌；拍照录视频（全景、车牌、刹车痕、伤者位置）；报 122 与保险；有人伤先救人。",
+      w:"等交警出具事故认定书→三日内可申请复核→凭认定书与票据向保险公司索赔→协商不成起诉；逃逸可举报并追刑责。",
+      h:"122 / 保险公司",
+      l:["《道路交通安全法》第76条：机动车发生交通事故造成人身伤亡、财产损失，由保险公司在交强险责任限额内赔偿，不足部分按责任承担。",
+         "《道路交通安全法》第73条：交警应及时出具交通事故认定书，作为处理事故的证据。"]
+    },
+    {
+      t:"电动车被扣、超标被查",
+      s:"无牌上路被扣、改装提速被认定机动车、无证驾驶被罚、取车要交“停车费”。",
+      p:"购车保留发票与合格证；按当地规定上牌；不改装电机与限速；骑行戴头盔、走非机动车道。",
+      w:"索取扣车凭证与处罚决定书→按要求补办牌证→对处罚不服可申请行政复议或诉讼→停车费由行政机关承担，不应由当事人支付。",
+      h:"122 / 12345",
+      l:["《道路交通安全法》第18条：依法应当登记的非机动车，经登记后方可上道路行驶。",
+         "《行政强制法》第26条：查封、扣押的场所或设施由行政机关负责，因查封扣押发生的保管费用由行政机关承担。"]
+    },
+    {
+      t:"网约车绕路、加价、拒载",
+      s:"故意绕远、私下要“返程费”、以堵车为由加价、接单后要求取消重下。",
+      p:"上车核对车牌与司机；开启行程分享；不私下取消订单转账；保留行程记录与录音。",
+      w:"平台内投诉并申请退差价→平台不处理向交通运输部门投诉（12328）→多次违规可要求平台处罚司机。",
+      h:"12328 / 平台客服",
+      l:["《网络预约出租汽车经营服务管理暂行办法》：不得途中甩客、故意绕道、违规收费。",
+         "《民法典》第509条：当事人应按约定全面履行义务。"]
+    },
+    {
+      t:"代驾出事故、停车被刮蹭",
+      s:"代驾撞车后推给车主、代驾平台失联；停车场内车被刮找不到人；停车乱收费。",
+      p:"代驾前确认平台与保险；事故当场报警并拍现场；停车取票、记录入场时间与车位号。",
+      w:"代驾事故由平台/代驾方承担相应责任，报交警定责并报保险→停车场管理方未尽安保义务可索赔→乱收费向 12315 / 12345 投诉。",
+      h:"122 / 12315",
+      l:["《民法典》第1191条：用人单位工作人员因执行工作任务造成他人损害，由用人单位承担侵权责任。",
+         "《民法典》第1198条：经营场所、公共场所的经营者、管理者未尽安全保障义务造成他人损害，应承担侵权责任。"]
+    }
+  ]
+},
+{
+  no:"10", id:"medical", title:"医疗与医美",
+  sum:"医院乱收费、病历拿不到、医美失败、保健品当药卖。",
+  items:[
+    {
+      t:"医院乱收费、不给病历",
+      s:"重复收费、分解项目收费、强制购买耗材、出院不给费用清单、复印病历经久拖延。",
+      p:"住院每日核对费用清单；索要发票与明细；复印病历按程序书面申请并留回执。",
+      w:"向医院医务科/收费处书面异议→卫健委投诉（12345 / 12320）→医保基金违规向医保部门举报→可申请医疗纠纷调解。",
+      h:"12320 / 12345",
+      l:["《民法典》第1225条：医疗机构及其医务人员应按规定填写并妥善保管病历资料，患者有权查阅、复制。",
+         "《基本医疗卫生与健康促进法》：不得诱导、欺诈、强迫患者接受不必要的医疗服务。"]
+    },
+    {
+      t:"医美失败、无证机构",
+      s:"工作室打针、无医师资质操作、超范围做手术、术后感染毁容、诱导分期贷款。",
+      p:"查机构《医疗机构执业许可证》与医生执业证；保留术前照片、产品批号、缴费凭证；不选“上门服务”。",
+      w:"固定术前术后照片与病历→向卫健委举报无证行医（12320）→12315 投诉→申请医疗损害鉴定→协商或起诉索赔。",
+      h:"12320 / 12315",
+      l:["《民法典》第1218条：患者在诊疗活动中受到损害，医疗机构或其医务人员有过错的，由医疗机构承担赔偿责任。",
+         "《医师法》：未取得医师执业资格不得从事医师执业活动。"]
+    },
+    {
+      t:"药品、保健品虚假宣传",
+      s:"保健品宣称“根治”“抗癌”、免费体检后高价卖药、以“专家讲座”诱导老人购买。",
+      p:"认准“国药准字”与保健食品“蓝帽子”；不相信“包治百病”；大额购买先与家人核实。",
+      w:"保留宣传单、录音、付款凭证→12315 举报虚假宣传→涉及假药向药监部门举报→可主张三倍赔偿。",
+      h:"12315",
+      l:["《广告法》第18条：保健食品广告不得含有表示功效、安全性的断言或保证，不得涉及疾病治疗功能。",
+         "《消费者权益保护法》第55条：欺诈行为按价款三倍赔偿，不足五百按五百计。"]
+    },
+    {
+      t:"医疗纠纷处理流程",
+      s:"术后效果争议、延误治疗、知情同意缺失、赔偿谈不拢。",
+      p:"第一时间封存并复印病历；保留全部票据与影像资料；不私下签“一次性了结”协议。",
+      w:"与医院协商→申请医疗纠纷人民调解（医调委，免费）→医疗损害鉴定→诉讼；涉刑可报警。",
+      h:"12348 / 医调委",
+      l:["《医疗纠纷预防和处理条例》：发生医疗纠纷可通过协商、人民调解、行政调解、诉讼等途径解决。",
+         "《民法典》第1219条：医务人员应向患者说明病情和医疗措施，取得明确同意。"]
+    }
+  ]
+},
+{
+  no:"11", id:"family", title:"婚姻家庭",
+  sum:"家暴怎么报警、彩礼能不能退、离婚与抚养费。",
+  items:[
+    {
+      t:"家庭暴力",
+      s:"殴打、辱骂、限制人身自由、经济控制、威胁伤害亲属；打完说是“家务事”。",
+      p:"第一时间离开危险环境；保存伤情照片、就医记录、报警回执、聊天录音；记住邻居与目击者。",
+      w:"报 110 并要求出具告诫书或受案回执→就医验伤→向法院申请人身安全保护令→可提起离婚并主张损害赔偿。",
+      h:"110 / 12338",
+      l:["《反家庭暴力法》第23条：当事人因遭受家庭暴力或面临现实危险，可向人民法院申请人身安全保护令。",
+         "《民法典》第1042条：禁止家庭暴力，禁止家庭成员间的虐待和遗弃。"]
+    },
+    {
+      t:"彩礼返还",
+      s:"订婚后退婚、给了彩礼未登记、登记后未共同生活、闪婚闪离。",
+      p:"彩礼尽量银行转账并备注；保留聊天、媒人证言、婚礼支出凭证；区分彩礼与日常赠与。",
+      w:"先协商→村委会/调解组织调解→起诉主张返还；法院会综合共同生活时间、是否生育、双方过错酌定。",
+      h:"12348",
+      l:["《最高人民法院关于审理涉彩礼纠纷案件适用法律若干问题的规定》（2024年2月1日施行）：未办理结婚登记、登记后未共同生活、给付致生活困难等情形可请求返还。",
+         "《民法典》第1042条：禁止借婚姻索取财物。"]
+    },
+    {
+      t:"离婚、财产与抚养权",
+      s:"一方不同意离婚、转移财产、藏匿孩子、协议离婚后对方不配合。",
+      p:"梳理共同财产线索（房、车、存款、股权）；保存孩子日常照料证据；协议写清财产与探望安排。",
+      w:"协议离婚有三十日冷静期→诉讼离婚需证明感情确已破裂→申请财产保全→判决生效后申请强制执行。",
+      h:"12348",
+      l:["《民法典》第1077条：协议离婚有三十日冷静期，期满后三十日内双方应亲自申请发证。",
+         "《民法典》第1084条：不满两周岁的子女以由母亲直接抚养为原则；已满八周岁应尊重其真实意愿。"]
+    },
+    {
+      t:"抚养费不给、探望被阻",
+      s:"离婚后长期不付抚养费、以不给钱为由拒绝探望、擅自给孩子改姓迁户。",
+      p:"离婚协议或判决写明金额、支付日、账户；保留催告记录；探望安排具体到时间地点。",
+      w:"凭协议或判决申请强制执行（可查扣工资、冻结账户）→拒执情节严重可追刑责→探望权可单独起诉。",
+      h:"12348 / 法院",
+      l:["《民法典》第1085条：离婚后子女由一方直接抚养的，另一方应负担部分或全部抚养费。",
+         "《民法典》第1086条：不直接抚养子女的父或母有探望权，另一方有协助义务。"]
+    },
+    {
+      t:"赡养老人、遗产继承",
+      s:"子女互相推诿不赡养、老人被逼签放弃继承、遗嘱只有复印件、存款房产被某一子女独占。",
+      p:"赡养协议书面写明出钱出力的分担；遗嘱尽量公证或两名无利害关系见证人；保留老人医疗与照护支出凭证。",
+      w:"先申请人民调解→赡养费可起诉要求按月给付→继承纠纷可起诉分割遗产→伪造遗嘱情节严重可追刑责。",
+      h:"12348 / 法院",
+      l:["《民法典》第1067条：成年子女不履行赡养义务，缺乏劳动能力或生活困难的父母，有权要求给付赡养费。",
+         "《民法典》第1123条：继承开始后按法定继承办理；有遗嘱的按遗嘱继承或遗赠办理。",
+         "《民法典》第1130条：同一顺序继承人继承遗产的份额，一般应当均等。"]
+    }
+  ]
+},
+{
+  no:"12", id:"dignity", title:"辱骂、网暴与人格权",
+  sum:"被当众羞辱、网上造谣、偷拍传播、人肉搜索、职场辱骂——从取证到报警的完整路径。",
+  items:[
+    {
+      t:"被人当众辱骂、羞辱",
+      s:"街头争吵被骂脏话、被当众造谣、被贴“老赖”“小三”标签、被吐口水推搡。",
+      p:"先保证人身安全、往人多或有监控处走；开启录音录像（尽量拍到对方正面与全貌）；找目击者留联系方式。",
+      w:"报警 110 要求受案并出具受案回执→要求对方当面道歉→造成影响可起诉侵犯名誉权、索赔精神损害；情节严重可追究侮辱罪。",
+      h:"110 / 12348",
+      l:["《民法典》第1024条：民事主体享有名誉权，任何组织或个人不得以侮辱、诽谤等方式侵害。",
+         "《治安管理处罚法》关于公然侮辱他人、捏造事实诽谤他人的规定，可处拘留或罚款。",
+         "《刑法》第246条：以暴力或其他方法公然侮辱他人或捏造事实诽谤他人，情节严重的构成犯罪。"]
+    },
+    {
+      t:"网上造谣、网暴、开盒",
+      s:"短视频/群聊编造事实、P 遗照、组织“挂人”、评论区围攻、曝光手机号住址。",
+      p:"截图要带完整页面与时间（含 URL、账号 ID）；不互骂、不反击造谣以免被抓把柄；关闭陌生人私信。",
+      w:"平台举报并要求删除→保存回执→报 110（网暴、侵犯个人信息）→向 12377 举报→起诉平台与侵权人，要求删帖、道歉、赔偿。",
+      h:"110 / 12377",
+      l:["《民法典》第1024条、第1032条：名誉权与隐私权受法律保护。",
+         "《个人信息保护法》第10条：任何组织、个人不得非法收集、使用、加工、传输他人个人信息。",
+         "《刑法》第246条、第253条之一：情节严重的侮辱诽谤、侵犯公民个人信息可追刑责。"]
+    },
+    {
+      t:"偷拍、偷录与隐私传播",
+      s:"试衣间/卫生间偷拍、出租屋装摄像头、前任传播私密影像、私自公开聊天记录。",
+      p:"入住先检查可疑孔洞与联网设备；发现偷拍立即报警并保留设备；不点开、不转发他人私密内容。",
+      w:"报 110 并要求扣押设备→要求平台删除（12377）→起诉侵犯隐私、索赔精神损害→传播私密影像可构成犯罪。",
+      h:"110 / 12377",
+      l:["《民法典》第1032条：自然人享有隐私权，不得以刺探、侵扰、泄露、公开等方式侵害。",
+         "《治安管理处罚法》关于偷窥、偷拍、窃听、散布他人隐私的规定。"]
+    },
+    {
+      t:"职场辱骂、PUA、当众贬损",
+      s:"领导当众辱骂、罚站罚跪、群里点名羞辱、以“业绩不达标”人身攻击。",
+      p:"保留聊天记录与录音；记录时间地点与在场人；不签“自愿接受处罚”文件。",
+      w:"向公司人事/工会书面反映→劳动监察投诉（12333）→侵犯人格权可另行起诉→涉及体罚、限制人身自由报 110。",
+      h:"12333 / 110",
+      l:["《民法典》第109条：自然人的人身自由、人格尊严受法律保护。",
+         "《劳动法》第96条：侮辱、体罚、殴打、非法搜查和拘禁劳动者的，由公安机关依法处理。"]
+    },
+    {
+      t:"校园欺凌、同学间辱骂殴打",
+      s:"起绰号羞辱、围堵殴打、拍视频传播、建群孤立、索要钱财。",
+      p:"孩子回家异常沉默、身上有伤、物品丢失要追问；保存聊天记录与视频；及时书面告知班主任并要求记录。",
+      w:"向学校书面反映并要求启动欺凌防控处置→校方不处理向教育局投诉（12345）→涉及殴打、传播视频报 110→可起诉学校与监护人索赔。",
+      h:"110 / 12345",
+      l:["《未成年人保护法》第39条：学校应建立学生欺凌防控工作制度，对欺凌行为立即制止并通知监护人。",
+         "《民法典》第1199条：无民事行为能力人在学校受到人身损害，学校未尽教育、管理职责应承担侵权责任。",
+         "《治安管理处罚法》关于殴打他人、侮辱他人的规定；情节严重可追刑责。"]
+    }
+  ]
+},
+{
+  no:"13", id:"scam", title:"诈骗与个人信息",
+  sum:"冒充客服、刷单返利、杀猪盘、兼职押金、信息泄露骚扰。",
+  items:[
+    {
+      t:"冒充客服退款、快递理赔",
+      s:"电话称“商品质量问题双倍退款”、加微信发链接、要求共享屏幕、索要验证码。",
+      p:"挂断后用官方 App 内客服核实；不点陌生链接、不下会议软件共享屏幕；任何人索要验证码一律拒绝。",
+      w:"立即挂断并冻结相关账户→保留通话录音与转账记录→报 110 与 96110→向平台官方投诉。",
+      h:"110 / 96110",
+      l:["《反电信网络诈骗法》第14条：任何单位和个人不得非法买卖、出租、出借电话卡、银行账户、支付账户等。",
+         "《刑法》第266条：诈骗公私财物数额较大的，构成诈骗罪。"]
+    },
+    {
+      t:"刷单返利、杀猪盘、虚假投资",
+      s:"先小额返利再诱导大额充值、网恋后带你“投资”、假平台显示盈利但无法提现。",
+      p:"凡是“垫付返利”都是诈骗；不认识的人推荐投资一律拒绝；不向私人账户转“保证金”。",
+      w:"立即停止转账→截图保存平台、聊天、转账记录→报 110 与 96110→向国家反诈中心 App 举报。",
+      h:"110 / 96110",
+      l:["《反电信网络诈骗法》：任何单位和个人不得为电信网络诈骗活动提供帮助，包括技术支持、支付结算、广告推广等。",
+         "《刑法》第266条：诈骗罪；组织者可能构成帮助信息网络犯罪活动罪。"]
+    },
+    {
+      t:"兼职押金、培训贷",
+      s:"入职先交服装费/培训费、承诺“包分配”却让贷款、兼职要求先垫资刷单。",
+      p:"任何入职前收费都是红线；不提供身份证原件、不人脸识别办贷款；合同逐条看。",
+      w:"拒绝付费并保留证据→12315 / 12345 投诉→已办贷款向 12378 投诉并申请撤销→涉嫌诈骗报 110。",
+      h:"12315 / 12378",
+      l:["《劳动合同法》第9条：用人单位招用劳动者，不得要求提供担保或以其他名义向劳动者收取财物。",
+         "《消费者权益保护法》第16条：不得设定不公平、不合理的交易条件。"]
+    },
+    {
+      t:"个人信息泄露、骚扰电话",
+      s:"刚买房就接到装修电话、快递面单被卖、App 过度索权、注销账号后被继续营销。",
+      p:"快递涂抹面单、关闭 App 非必要权限、不用同一密码、不随意填问卷；定期查征信与账号登录记录。",
+      w:"向平台要求删除并留回执→12321 举报骚扰号码→12377 举报违法信息→造成损失可依个人信息保护法索赔。",
+      h:"12321 / 12377",
+      l:["《个人信息保护法》第13条：处理个人信息应取得同意或具有其他合法性基础。",
+         "《个人信息保护法》第69条：处理个人信息侵害权益造成损害，个人信息处理者不能证明无过错的，应承担赔偿责任。"]
+    },
+    {
+      t:"AI 换脸、声音克隆诈骗",
+      s:"用亲友视频通话借钱、伪造领导语音指令转账、合成不雅视频敲诈。",
+      p:"凡是转账一律挂断后用本人常用号码回拨核实；约定家庭暗号；不在社交平台公开发布清晰正脸与语音。",
+      w:"不转账、不点链接→保留通话录屏与账号信息→报 110 与 96110→向平台举报仿冒账号→已被敲诈不要付款并报警。",
+      h:"110 / 96110",
+      l:["《反电信网络诈骗法》：任何单位和个人不得利用人工智能技术实施或帮助实施电信网络诈骗。",
+         "《刑法》第266条：诈骗罪；伪造视频敲诈可能同时构成敲诈勒索罪。",
+         "《个人信息保护法》第10条：不得非法收集、使用、加工、传输他人个人信息。"]
+    }
+  ]
+},
+{
+  no:"14", id:"procedure", title:"报警、仲裁、起诉与复议",
+  sum:"先找谁、多久内办、需要带什么——把维权流程走对的关键四步。",
+  items:[
+    {
+      t:"报警与受案回执",
+      s:"报警只做登记不给回执、民警让“自己协商”、案子久拖无进展。",
+      p:"说明时间地点人物经过，要求出具受案回执或接报案回执；保留警号与派出所名称；伤情及时验伤。",
+      w:"拿到回执后按编号查询进度→超期未处理可向上级公安机关或督察反映→涉及不作为可申请行政复议、提起行政诉讼。",
+      h:"110 / 12389",
+      l:["《公安机关办理刑事案件程序规定》：接受案件应制作受案登记表并出具回执。",
+         "《行政复议法》：对行政机关不作为不服，可在法定期限内申请行政复议。"]
+    },
+    {
+      t:"劳动仲裁",
+      s:"欠薪、违法辞退、工伤待遇争议；不知道该去哪、怕过期。",
+      p:"先确认劳动关系证据（合同、工资流水、考勤、工牌、工作群）；争议发生一年内提出。",
+      w:"向用人单位所在地或劳动合同履行地劳动人事争议仲裁委提交申请书→45 日内审结（可延长）→不服可 15 日内起诉。",
+      h:"12333",
+      l:["《劳动争议调解仲裁法》第27条：仲裁时效为一年，从当事人知道或应当知道权利被侵害之日起计算。",
+         "《劳动争议调解仲裁法》第2条：因确认劳动关系、劳动报酬、工伤医疗费、经济补偿等发生的争议适用本法。"]
+    },
+    {
+      t:"起诉、小额诉讼与支付令",
+      s:"金额不大却请律师不划算、对方拖着不还、不知道去哪个法院。",
+      p:"准备起诉状、证据清单、双方身份信息；一般向被告住所地或合同履行地法院起诉；标的额小的可走小额诉讼。",
+      w:"网上立案（人民法院在线服务）→小额诉讼一审终审、审理快→债权明确的金钱债务可申请支付令→胜诉后申请强制执行。",
+      h:"12348 / 法院",
+      l:["《民事诉讼法》：符合条件的小额诉讼案件实行一审终审。",
+         "《民事诉讼法》：债权人请求给付金钱、有价证券，债权债务关系明确的，可申请支付令。"]
+    },
+    {
+      t:"行政复议与调解、法律援助",
+      s:"被罚款、被扣车、被不予受理；想调解但不知道找谁；经济困难请不起律师。",
+      p:"先看处罚决定书上的救济途径与期限（复议一般为 60 日）；保留送达回证。",
+      w:"向本级政府或上级主管部门申请行政复议→也可直接起诉→民事纠纷找人民调解委员会→符合条件向法律援助中心申请免费律师（12348）。",
+      h:"12348 / 12345",
+      l:["《行政复议法》：公民、法人或其他组织认为行政行为侵犯其合法权益，可依法申请行政复议。",
+         "《法律援助法》：经济困难公民可申请法律咨询、代理、刑事辩护等法律援助。"]
+    }
+  ]
+},
+];
+</script>
+<script>
+/* ================= 渲染与交互 ================= */
+const app = document.getElementById('app');
+const qInput = document.getElementById('q');
+const toastEl = document.getElementById('toast');
+const dlg = document.getElementById('dlg');
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function toast(msg){
+  toastEl.textContent = msg; toastEl.classList.add('on');
+  clearTimeout(toast._t); toast._t = setTimeout(()=>toastEl.classList.remove('on'), 1600);
+}
+function copyTel(num){
+  const txt = num.replace(/\s/g,'');
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(()=>toast('已复制 '+txt)).catch(()=>toast('号码：'+txt));
+  } else { toast('号码：'+txt); }
+}
+function telHtml(str){
+  return str.split('/').map(x=>x.trim()).filter(Boolean).map(n=>
+    '<span class="tel" data-tip="点击复制号码" data-copy="'+esc(n)+'">'+
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>'+
+      esc(n)+'</span>'
+  ).join('');
+}
+
+/* ---- 首页 ---- */
+function renderHome(){
+  const total = DATA.reduce((a,s)=>a+s.items.length,0);
+  let h = '';
+  h += '<section class="lead"><div class="lead-left">'+
+       '<h2>十四类生活场景，按需查用</h2>'+
+       '<p>每一类都写明：常见套路、怎么预防、出事怎么维权、打哪个电话、依据哪条法律。点分类进入细则，也可直接用上方搜索。</p>'+
+       '</div><div class="lead-right">'+
+       '<div class="stat"><b>'+DATA.length+'</b><span>大类</span></div>'+
+       '<div class="stat"><b>'+total+'</b><span>具体场景</span></div>'+
+       '<div class="stat"><b>'+HOTLINES.length+'</b><span>维权电话</span></div>'+
+       '</div></section>';
+  h += '<div class="quick"><span class="qt">常用电话</span>'+
+       ['12345','12315','12333','110','122','12348'].map(n=>'<span class="tel" data-tip="点击复制号码" data-copy="'+n+'">'+n+'</span>').join('')+
+       '<a class="more" href="#/s/hotlines">全部渠道<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>';
+  h += '<div class="grid">';
+  DATA.forEach(s=>{
+    h += '<a class="card" href="#/s/'+s.id+'">'+
+         '<div class="card-top"><span class="card-no">'+esc(s.no)+'</span>'+
+         '<span class="card-title">'+esc(s.title)+'</span></div>'+
+         '<p class="card-sum">'+esc(s.sum)+'</p>'+
+         '<div class="card-foot"><span>'+s.items.length+' 个场景</span>'+
+         '<span class="go">查看细则<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></div></a>';
+  });
+  h += '</div>';
+  app.innerHTML = h;
+  setMenuState(false);
+}
+
+/* ---- 分类页 ---- */
+function renderSection(id){
+  const s = DATA.find(x=>x.id===id);
+  if(!s){location.hash='#/home';return;}
+  let h = '<div class="crumb"><a href="#/home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>全部分类</a><span>/</span><span>'+esc(s.title)+'</span></div>';
+  h += '<div class="sec-head"><div class="no">'+esc(s.no)+'　'+s.items.length+' 个场景</div>'+
+       '<h2>'+esc(s.title)+'</h2><p>'+esc(s.sum)+'</p></div>';
+  s.items.forEach((it,i)=>{
+    h += '<article class="item"><div class="item-t"><span class="n">'+String(i+1).padStart(2,'0')+'</span><span>'+esc(it.t)+'</span></div><div class="rows">'+
+         '<div class="row"><span class="lab">常见情形</span><p>'+esc(it.s)+'</p></div>'+
+         '<div class="row"><span class="lab">如何预防</span><p>'+esc(it.p)+'</p></div>'+
+         '<div class="row"><span class="lab g2">维权步骤</span><p>'+esc(it.w)+'</p></div>'+
+         '<div class="row"><span class="lab">电话 / 法律</span><div><div class="tel-wrap">'+telHtml(it.h)+'</div>'+
+         '<div class="laws">'+it.l.map(x=>'<div class="law">'+esc(x)+'</div>').join('')+'</div>'+
+         '<button class="more-law" data-law="'+esc(JSON.stringify({t:it.t,l:it.l,h:it.h}))+'">'+
+         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg>条文要点与投诉渠道</button>'+
+         '</div></div></div></article>';
+  });
+  app.innerHTML = h;
+  setMenuState(false);
+  window.scrollTo({top:0});
+}
+
+/* ---- 搜索页 ---- */
+function renderSearch(q){
+  q = (q||'').trim();
+  if(!q){location.hash='#/home';return;}
+  const kw = q.toLowerCase();
+  const hit = (v)=>String(v).toLowerCase().includes(kw);
+  const groups = [];
+  let count = 0;
+  DATA.forEach(s=>{
+    s.items.forEach(it=>{
+      const pool = [it.t,it.s,it.p,it.w,it.h,it.l.join(' ')].join(' ');
+      if(hit(pool)){ count++; if(!groups.find(g=>g.id===s.id)) groups.push({id:s.id,title:s.title,items:[]});
+        groups.find(g=>g.id===s.id).items.push(it); }
+    });
+  });
+  const hot = HOTLINES.filter(x=>hit(x.n+' '+x.u+' '+x.d));
+  if(hot.length){
+    count += hot.length;
+    groups.push({id:'hotlines', title:'投诉电话速查',
+      items: hot.map(x=>({t:x.n+'　'+x.u, s:x.d}))});
+  }
+  let h = '<div class="crumb"><a href="#/home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>全部分类</a><span>/</span><span>搜索结果</span></div>';
+  h += '<div class="sr-head"><h2>搜索：'+esc(q)+'</h2><p>共找到 '+count+' 条相关场景</p></div>';
+  if(!count){
+    h += '<div class="empty-sr">没有匹配内容，换个关键词试试，例如“押金”“欠薪”“辱骂”“快递”。</div>';
+  } else {
+    groups.forEach(g=>{
+      h += '<div class="sr-group"><div class="g-t">'+esc(g.title)+'</div>';
+      g.items.forEach(it=>{
+        const snippet = (it.s.length>70? it.s.slice(0,70)+'…' : it.s);
+        h += '<div class="sr-item" data-sec="'+g.id+'"><h4>'+mark(it.t, q)+'</h4>'+
+             '<p>'+mark(snippet, q)+'</p></div>';
+      });
+      h += '</div>';
+    });
+  }
+  app.innerHTML = h;
+  setMenuState(false);
+  window.scrollTo({top:0});
+}
+function mark(text, q){
+  const safe = esc(text);
+  const q2 = esc(q).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  return safe.replace(new RegExp(q2,'ig'), m=>'<mark>'+m+'</mark>');
+}
+
+/* ---- 路由 ---- */
+function route(){
+  const h = location.hash.replace(/^#\/?/,'');
+  if(h.startsWith('s/')){ renderSection(h.slice(2)); }
+  else if(h.startsWith('q/')){ const q=decodeURIComponent(h.slice(2)); qInput.value=q; renderSearch(q); }
+  else { renderHome(); }
+  document.getElementById('scrim').classList.remove('on');
+  document.getElementById('drawer').classList.remove('on');
+  document.body.style.overflow='';
+}
+window.addEventListener('hashchange', route);
+
+/* ---- 抽屉 ---- */
+const drawer = document.getElementById('drawer');
+const scrim = document.getElementById('scrim');
+const menuBtn = document.getElementById('menuBtn');
+function setMenuState(on){
+  drawer.classList.toggle('on', on);
+  scrim.classList.toggle('on', on);
+  document.body.style.overflow = on? 'hidden':'';
+  menuBtn.setAttribute('aria-expanded', on? 'true':'false');
+  drawer.setAttribute('aria-hidden', on? 'false':'true');
+}
+function buildDrawer(){
+  const list = document.getElementById('drawerList');
+  list.innerHTML = DATA.map(s=>'<a class="d-item" href="#/s/'+s.id+'"><span class="n">'+esc(s.no)+'</span><span class="t">'+esc(s.title)+'</span></a>').join('')
+    + '<a class="d-item" href="#/s/hotlines"><span class="n">99</span><span class="t">投诉电话与渠道速查</span></a>';
+}
+menuBtn.addEventListener('click', ()=>setMenuState(!drawer.classList.contains('on')));
+document.getElementById('drawerClose').addEventListener('click', ()=>setMenuState(false));
+scrim.addEventListener('click', ()=>setMenuState(false));
+document.getElementById('fabMenu').addEventListener('click', ()=>setMenuState(true));
+document.getElementById('fabTop').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+drawer.addEventListener('click', e=>{ if(e.target.closest('.d-item')) setMenuState(false); });
+
+/* ---- 搜索 ---- */
+let searchTimer=null;
+qInput.addEventListener('input', ()=>{
+  clearTimeout(searchTimer);
+  const v=qInput.value.trim();
+  searchTimer=setTimeout(()=>{
+    if(!v){ if(location.hash!=='#/home') history.replaceState(null,'','#/home'); renderHome(); return; }
+    history.replaceState(null,'','#/q/'+encodeURIComponent(v));
+    renderSearch(v);
+  },220);
+});
+qInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); qInput.dispatchEvent(new Event('input')); } });
+
+/* ---- 条文弹窗 / 复制 / 搜索结果跳转 ---- */
+document.addEventListener('click', e=>{
+  const tel = e.target.closest('.tel');
+  if(tel){ copyTel(tel.dataset.copy||tel.textContent.trim()); return; }
+  const law = e.target.closest('[data-law]');
+  if(law){
+    const d = JSON.parse(law.dataset.law);
+    document.getElementById('dlgTitle').textContent = d.t;
+    document.getElementById('dlgBody').innerHTML =
+      '<h4>法律依据</h4><ul>'+d.l.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>'+
+      '<h4>建议投诉渠道</h4><p>'+esc(d.h)+'。拨打前先整理：时间、地点、金额、对方名称、证据清单（照片/录像/票据/聊天记录）。</p>'+
+      '<h4>取证提示</h4><p>先固定证据再沟通；录音录像注意完整、不剪辑；书面沟通尽量用微信/短信保留时间戳；涉及人身伤害第一时间就医并留存病历。</p>';
+    if(dlg.showModal) dlg.showModal(); else toast('浏览器不支持弹窗');
+    return;
+  }
+  const sr = e.target.closest('.sr-item');
+  if(sr){ location.hash='#/s/'+sr.dataset.sec; }
+});
+document.getElementById('dlgClose').addEventListener('click', ()=>dlg.close());
+dlg.addEventListener('click', ev=>{ if(ev.target===dlg) dlg.close(); });
+
+/* ---- 悬浮速查卡（可拖动） ---- */
+const mini = document.getElementById('mini');
+function buildMini(){
+  document.getElementById('miniBody').innerHTML = HOTLINES.slice(0,10).map(h=>
+    '<a href="#" data-mini="'+esc(h.n)+'"><span>'+esc(h.u)+'</span><i>'+esc(h.n)+'</i></a>').join('');
+}
+document.getElementById('fabMini').addEventListener('click', ()=>{
+  mini.classList.toggle('on');
+  if(mini.classList.contains('on')) toast('已打开速查浮窗');
+});
+document.getElementById('miniClose').addEventListener('click', ()=>mini.classList.remove('on'));
+document.getElementById('miniBody').addEventListener('click', e=>{
+  const a=e.target.closest('[data-mini]'); if(!a) return;
+  e.preventDefault(); copyTel(a.dataset.mini);
+});
+(function dragMini(){
+  const head=document.getElementById('miniHead');
+  let sx=0,sy=0,ox=0,oy=0,drag=false;
+  head.addEventListener('pointerdown', e=>{
+    drag=true; const r=mini.getBoundingClientRect();
+    mini.style.left=r.left+'px'; mini.style.top=r.top+'px'; mini.style.bottom='auto';
+    sx=e.clientX; sy=e.clientY; ox=r.left; oy=r.top; head.setPointerCapture(e.pointerId);
+  });
+  head.addEventListener('pointermove', e=>{
+    if(!drag) return;
+    const w=mini.offsetWidth, hh=mini.offsetHeight;
+    let nx=ox+(e.clientX-sx), ny=oy+(e.clientY-sy);
+    nx=Math.max(8,Math.min(window.innerWidth-w-8,nx));
+    ny=Math.max(8,Math.min(window.innerHeight-hh-8,ny));
+    mini.style.left=nx+'px'; mini.style.top=ny+'px';
+  });
+  head.addEventListener('pointerup', ()=>{drag=false;});
+})();
+
+/* ---- 电话速查页（第 99 项） ---- */
+function renderHotlines(){
+  let h='<div class="crumb"><a href="#/home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>全部分类</a><span>/</span><span>投诉电话速查</span></div>'+
+    '<div class="sec-head"><div class="no">99　渠道清单</div><h2>投诉电话与渠道速查</h2>'+
+    '<p>先按纠纷类型选渠道，再按“证据—书面—升级”的顺序推进；同一件事可多线并行，但不要重复无意义投诉。</p></div>';
+  h+='<article class="item"><div class="rows">';
+  HOTLINES.forEach(x=>{
+    h+='<div class="row"><span class="lab">'+esc(x.u)+'</span><div><div class="tel-wrap">'+telHtml(x.n)+'</div>'+
+       '<div class="laws"><div class="law">'+esc(x.d)+'</div></div></div></div>';
+  });
+  h+='</div></article>';
+  app.innerHTML=h; setMenuState(false); window.scrollTo({top:0});
+}
+
+/* ---- 拦截分类页里 hotlines 路由 ---- */
+const _renderSection = renderSection;
+renderSection = function(id){
+  if(id==='hotlines'){ renderHotlines(); return; }
+  _renderSection(id);
+};
+
+/* ---- 启动 ---- */
+buildDrawer(); buildMini(); route();
+</script>
+</body>
+</html>
